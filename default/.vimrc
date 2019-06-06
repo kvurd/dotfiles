@@ -23,6 +23,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'fatih/vim-go'
 Plugin 'ambv/black'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
@@ -54,6 +55,7 @@ set nomodeline
 
 " make benefit case insensitive searches, except if capitals used
 set ignorecase
+set smartcase
 
 " turn on the ruler (show cursor position)
 set ruler

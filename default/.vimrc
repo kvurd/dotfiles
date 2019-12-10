@@ -19,11 +19,10 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'fatih/vim-go'
-Plugin 'ambv/black'
+Plugin 'psf/black'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 
 call vundle#end()
 
@@ -34,6 +33,9 @@ endif
 filetype plugin indent on
 
 syntax on
+
+" no wrapping
+set nowrap
 
 " fix clipboard
 set clipboard=unnamed
@@ -144,4 +146,10 @@ if exists("&breakindent")
 endif
 
 " auto format python
-autocmd BufWritePre *.py execute ':Black'
+" autocmd BufWritePre *.py execute ':Black'
+
+let g:ale_fixers = {
+\   'python': ['black'],
+\}
+
+let g:ale_fix_on_save = 1

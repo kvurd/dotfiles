@@ -3,9 +3,9 @@
 call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
-Plug 'psf/black'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 filetype plugin indent on
@@ -80,6 +80,7 @@ autocmd FileType htmldjango setlocal shiftwidth=2 softtabstop=2 tabstop=2 expand
 autocmd FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 autocmd FileType less setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
 
 " <esc> is no good
 
@@ -123,8 +124,13 @@ augroup python
     autocmd FileType python set colorcolumn=88
 augroup END
 
-let g:ale_fixers = {
-\   'python': ['black'],
+let g:ale_linters = {
+\   'python': ['pyright'],
 \}
-
+let g:ale_fixers = {
+\   'python': ['isort', 'black'],
+\   'javascript': ['prettier'],
+\}
+let g:ale_python_isort_options='--profile black'
 let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
